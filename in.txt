@@ -1,0 +1,13 @@
+class Computer
+String brand
+String model
+String year
+String serialNumber
+String OS
+String OSVersion
+String screenResolution
+double screenSize
+int memory
+int storage
+int CPUCoreCount
+int GPUCoreCount
