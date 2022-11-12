@@ -32,15 +32,18 @@ def write_getter(type: str, name: str) -> None:
     out.write("\t\treturn this." + name + ";\n")
     out.write("\t}\n")
 
-with open("classWriter/in.txt", "r") as inp:
-    stored_input = list(map(str.split, inp.readlines()))
-    with open("classWriter/" + stored_input[0][1] + ".java", "w") as out:
-        write_class(stored_input[0][1])
-        write_variables(stored_input[1:])
 
-        for tokenized_str in stored_input[1:]:
-            if "noSetter" not in tokenized_str:
-                write_setter(tokenized_str[0], tokenized_str[1])
-            if "noGetter" not in tokenized_str:
-                write_getter(tokenized_str[0], tokenized_str[1])
-        out.write("}\n")
+if __name__ == '__main__':
+    with open("in.txt", "r") as inp:
+        stored_input = list(map(str.split, inp.readlines()))
+        with open(stored_input[0][1] + ".java", "w") as out:
+            write_class(stored_input[0][1])
+            write_variables(stored_input[1:])
+
+            for tokenized_str in stored_input[1:]:
+                if "noSetter" not in tokenized_str:
+                    write_setter(tokenized_str[0], tokenized_str[1])
+                if "noGetter" not in tokenized_str:
+                    write_getter(tokenized_str[0], tokenized_str[1])
+            out.write("}\n")
+ 
